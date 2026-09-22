@@ -1,0 +1,20 @@
+Dear {{ full_name }},
+
+Thank you for reaching out to Hotel Pokhara Eye. We are delighted to confirm
+that your inquiry for {{ room_preference }} from {{ check_in }} to
+{{ check_out }} ({{ adults }} adult(s){% if children %}, {{ children }} child(ren){% endif %})
+has reached our reservations desk.
+
+Our team will review your dates and reach you shortly with availability and
+details.
+
+If you need immediate assistance, please reach us directly:
+
+  Phone / WhatsApp: +977-61-000000
+  Address: Lakeside, Pokhara, Nepal
+
+We look forward to welcoming you to the mountains.
+
+Warm regards,
+The Management & Hospitality Team
+Hotel Pokhara Eye

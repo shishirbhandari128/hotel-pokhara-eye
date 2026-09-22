@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Hotel Pokhara Eye — Boutique Himalayan Luxury{% endblock %}</title>
+<meta name="description" content="{% block meta_description %}Hotel Pokhara Eye is a boutique hotel in Pokhara, Nepal offering panoramic views of the Annapurna range, Machhapuchhre and Phewa Lake.{% endblock %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="icon" href="{% static 'images/logo.jpg' %}">
+</head>
+<body>
+
+{% if messages %}
+<ul id="server-messages" class="visually-hidden">
+  {% for message in messages %}
+    <li data-level="{{ message.tags }}">{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<header class="site-header" id="site-header">
+  <div class="site-header__inner container">
+    <a href="{% url 'index' %}" class="brand">
+      <img src="{% static 'images/logo.jpg' %}" alt="Hotel Pokhara Eye logo" class="brand__logo">
+      <span class="brand__name">Hotel Pokhara<em>Eye</em></span>
+    </a>
+
+    <nav class="nav" id="primary-nav">
+      <ul class="nav__list">
+        <li><a href="{{ home_prefix }}#about" class="nav__link">About</a></li>
+        <li><a href="{{ rooms_link }}" class="nav__link">Rooms</a></li>
+        <li><a href="{{ home_prefix }}#dining" class="nav__link">Dining</a></li>
+        <li><a href="{{ gallery_link }}" class="nav__link">Gallery</a></li>
+        <li><a href="{{ home_prefix }}#amenities" class="nav__link">Amenities</a></li>
+        <li><a href="{{ home_prefix }}#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="{{ home_prefix }}#contact" class="btn btn--accent btn--sm">Book / Inquire Now</a>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="{{ home_prefix }}#about" class="nav__link">About</a></li>
+      <li><a href="{{ rooms_link }}" class="nav__link">Rooms</a></li>
+      <li><a href="{{ home_prefix }}#dining" class="nav__link">Dining</a></li>
+      <li><a href="{{ gallery_link }}" class="nav__link">Gallery</a></li>
+      <li><a href="{{ home_prefix }}#amenities" class="nav__link">Amenities</a></li>
+      <li><a href="{{ home_prefix }}#contact" class="nav__link">Contact</a></li>
+      <li><a href="{{ home_prefix }}#contact" class="btn btn--accent btn--block">Book / Inquire Now</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <img src="{% static 'images/logo.jpg' %}" alt="Hotel Pokhara Eye logo" class="brand__logo">
+      <p>
+        A boutique hotel above Phewa Lake, Pokhara — Himalayan warmth,
+        panoramic views, and contemporary comfort.
+      </p>
+      <div class="site-footer__social">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="https://wa.me/97761000000" aria-label="WhatsApp" target="_blank" rel="noopener">WA</a>
+      </div>
+    </div>
+
+    <div class="site-footer__links">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="{{ home_prefix }}#about">About</a></li>
+        <li><a href="{{ rooms_link }}">Rooms</a></li>
+        <li><a href="{{ home_prefix }}#dining">Dining</a></li>
+        <li><a href="{{ gallery_link }}">Gallery</a></li>
+        <li><a href="{{ home_prefix }}#amenities">Amenities</a></li>
+        <li><a href="{{ home_prefix }}#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__contact">
+      <h4>Contact</h4>
+      <ul>
+        <li>Lakeside, Pokhara, Nepal</li>
+        <li><a href="tel:+97761000000">+977-61-000000</a></li>
+        <li><a href="mailto:reservations@hotelpokharaeye.com">reservations@hotelpokharaeye.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom container">
+    <p>&copy; <span id="footer-year">2026</span> Hotel Pokhara Eye. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="true"></div>
+
+<script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>

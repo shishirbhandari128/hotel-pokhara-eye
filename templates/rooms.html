@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Rooms & Suites — Hotel Pokhara Eye{% endblock %}
+{% block meta_description %}Explore every room and suite at Hotel Pokhara Eye — Annapurna and Machhapuchhre mountain views, private balconies, and boutique comfort in Pokhara, Nepal.{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="{% url 'index' %}">Home</a>
+      <span class="breadcrumbs__sep">/</span>
+      <span class="breadcrumbs__current">Accommodations</span>
+    </nav>
+    <p class="eyebrow eyebrow--light">Accommodations</p>
+    <h1 class="page-hero__title">Rooms &amp; Suites</h1>
+    <p class="page-hero__subtitle">
+      Every room at Hotel Pokhara Eye is a viewpoint of its own — spacious,
+      quiet, and framed by the Annapurna range and Machhapuchhre.
+    </p>
+  </div>
+</section>
+
+<section class="section rooms-page">
+  <div class="container">
+    <div class="rooms-page__grid">
+      {% for room in rooms %}
+      <article class="room-detail-card" id="room-{{ forloop.counter }}">
+        <div class="room-detail-card__media">
+          <img src="{% static room.image %}" alt="{{ room.name }}" loading="lazy">
+        </div>
+        <div class="room-detail-card__body">
+          <h2 class="room-detail-card__title">{{ room.name }}</h2>
+          <ul class="room-detail-card__meta">
+            <li><strong>Size:</strong> {{ room.size }}</li>
+            <li><strong>Occupancy:</strong> {{ room.capacity }}</li>
+          </ul>
+          <p class="room-detail-card__desc">{{ room.description }}</p>
+
+          <h3 class="room-detail-card__amenities-title">Room Amenities</h3>
+          <ul class="room-detail-card__amenities">
+            {% for badge in room.badges %}
+              <li><span class="highlight-dot"></span>{{ badge }}</li>
+            {% endfor %}
+          </ul>
+
+          <a href="{% url 'index' %}#contact?room={{ room.form_value|urlencode }}" class="btn btn--accent">
+            Inquire About This Room
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

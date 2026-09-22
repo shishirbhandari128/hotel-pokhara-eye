@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Gallery — Hotel Pokhara Eye{% endblock %}
+{% block meta_description %}Browse the full scenic gallery of Hotel Pokhara Eye — Annapurna and Machhapuchhre mountain views, rooftop dining, and boutique rooms in Pokhara, Nepal.{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="{% url 'index' %}">Home</a>
+      <span class="breadcrumbs__sep">/</span>
+      <span class="breadcrumbs__current">Gallery</span>
+    </nav>
+    <p class="eyebrow eyebrow--light">Scenic Himalayan Gallery</p>
+    <h1 class="page-hero__title">The View That Never Repeats</h1>
+    <p class="page-hero__subtitle">
+      Sunrise over the Annapurnas, rooftop dining at dusk, and boutique rooms
+      designed around the panorama — a full look at Hotel Pokhara Eye.
+    </p>
+  </div>
+</section>
+
+<section class="section gallery-page">
+  <div class="container">
+
+    <div class="gallery-filters" role="tablist" aria-label="Filter gallery by category">
+      <button type="button" class="gallery-filters__tab is-active" data-filter="all">All</button>
+      {% for category in gallery_categories %}
+        <button type="button" class="gallery-filters__tab" data-filter="{{ category.slug }}">{{ category.label }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="gallery gallery--full" id="gallery-full-grid">
+      {% for item in gallery_full %}
+      <button type="button" class="gallery__item" data-category="{{ item.category }}" data-full="{% static item.image %}" data-caption="{{ item.caption }}">
+        <img src="{% static item.image %}" alt="{{ item.caption }}" loading="lazy">
+        <span class="gallery__caption">{{ item.caption }}</span>
+      </button>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

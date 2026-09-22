@@ -1,0 +1,23 @@
+New Reservation Inquiry — Hotel Pokhara Eye
+============================================
+
+Guest Contact Information
+--------------------------
+Name:  {{ full_name }}
+Email: {{ email }}
+Phone: {{ phone }}
+
+Booking Details
+-----------------
+Check-in:        {{ check_in }}
+Check-out:       {{ check_out }}
+Room Preference: {{ room_preference }}
+Guests:          {{ adults }} adult(s){% if children %}, {{ children }} child(ren){% endif %}
+
+Message / Special Requests
+----------------------------
+{{ message|default:"(none provided)" }}
+
+Submitted: {{ submitted_at }}
+
+Reply directly to this email to respond to {{ full_name }} at {{ email }}.

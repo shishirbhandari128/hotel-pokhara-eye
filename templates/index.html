@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <section class="hero" id="hero">
+    <div class="hero__media">
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="{% static 'images/views1.jpg' %}">
+        <source src="{% static 'images/herosection.mp4' %}" type="video/mp4">
+      </video>
+      <div class="hero__fallback" style="background-image: url('{% static 'images/views1.jpg' %}');"></div>
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content container">
+      <p class="eyebrow eyebrow--light">Pokhara, Nepal · Lakeside</p>
+      <h1 class="hero__title">Wake Up to the Majesty of the Annapurnas</h1>
+      <p class="hero__subtitle">
+        A boutique sanctuary above Phewa Lake, where every window frames the
+        Annapurna range and Machhapuchhre — and Himalayan warmth meets
+        contemporary comfort.
+      </p>
+      <div class="hero__cta">
+        <a href="#contact" class="btn btn--accent">Book / Inquire Now</a>
+        <a href="#about" class="btn btn--ghost">Discover the Hotel</a>
+      </div>
+    </div>
+
+    <form class="quick-inquiry" id="quick-inquiry" aria-label="Quick inquiry">
+      <div class="quick-inquiry__field">
+        <label for="qi-check-in">Check-in</label>
+        <input type="date" id="qi-check-in" name="check_in">
+      </div>
+      <div class="quick-inquiry__field">
+        <label for="qi-check-out">Check-out</label>
+        <input type="date" id="qi-check-out" name="check_out">
+      </div>
+      <div class="quick-inquiry__field">
+        <label for="qi-guests">Guests</label>
+        <input type="number" id="qi-guests" name="guests" min="1" max="20" value="2">
+      </div>
+      <div class="quick-inquiry__field">
+        <label for="qi-room">Room Type</label>
+        <select id="qi-room" name="room_preference">
+          <option value="">Any</option>
+          {% for value, label in room_choices %}
+            {% if value %}<option value="{{ value }}">{{ label }}</option>{% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn--accent quick-inquiry__submit">Check Availability</button>
+    </form>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="container about__grid">
+      <div class="about__media">
+        <img src="{% static 'images/views2.jpg' %}" alt="Machhapuchhre view from Hotel Pokhara Eye" class="about__image about__image--back">
+        <img src="{% static 'images/view3.jpg' %}" alt="Mist over the Pokhara valley" class="about__image about__image--front">
+      </div>
+      <div class="about__copy">
+        <p class="eyebrow">Our Story</p>
+        <h2 class="section-title">Himalayan Warmth, Contemporary Comfort</h2>
+        <p>
+          Hotel Pokhara Eye was born from a simple idea: give every guest an
+          unobstructed sunrise over the Annapurnas without ever leaving their
+          room. Set on a quiet ridge above the noise of Lakeside, yet only
+          minutes from Phewa Lake's cafés and boats, the hotel blends
+          authentic Nepali hospitality with the quiet polish of modern
+          boutique design.
+        </p>
+        <p>
+          Locally sourced textiles, hand-finished woodwork, and a team that
+          treats every arrival like family — this is a place to slow down,
+          breathe alpine air, and watch the mountains change color from
+          dawn to dusk.
+        </p>
+        <ul class="about__highlights">
+          <li><span class="highlight-dot"></span>Prime ridge-top location with uninterrupted mountain views</li>
+          <li><span class="highlight-dot"></span>Peaceful, away from traffic noise — yet steps from Lakeside Pokhara</li>
+          <li><span class="highlight-dot"></span>Genuine Nepali hospitality with contemporary comfort</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rooms" id="rooms">
+    <div class="container">
+      <p class="eyebrow">Accommodations</p>
+      <h2 class="section-title">Rooms &amp; Suites</h2>
+      <p class="section-lead">Every room is a viewpoint of its own — designed for rest, framed by the Himalaya.</p>
+
+      <div class="rooms__grid">
+        {% for room in rooms %}
+        <article class="room-card">
+          <div class="room-card__media">
+            <img src="{% static room.image %}" alt="{{ room.name }}" loading="lazy">
+          </div>
+          <div class="room-card__body">
+            <h3 class="room-card__title">{{ room.name }}</h3>
+            <p class="room-card__desc">{{ room.description }}</p>
+            <ul class="room-card__badges">
+              {% for badge in room.badges %}
+                <li class="badge">{{ badge }}</li>
+              {% endfor %}
+            </ul>
+            <button type="button" class="btn btn--outline room-inquire" data-room="{{ room.form_value }}">
+              Inquire About This Room
+            </button>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+
+      <div class="section__footer-link">
+        <a href="{% url 'rooms' %}" class="btn btn--outline">View All Rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dining" id="dining">
+    <div class="container dining__grid">
+      <div class="dining__media">
+        <img src="{% static 'images/cafeteria1.jpg' %}" alt="Rooftop cafeteria seating" class="dining__image dining__image--main">
+        <img src="{% static 'images/cafeteria2.jpg' %}" alt="Himalayan coffee and breakfast" class="dining__image dining__image--secondary">
+      </div>
+      <div class="dining__copy">
+        <p class="eyebrow">Rooftop Cafeteria &amp; Dining</p>
+        <h2 class="section-title">Breakfast Above the Clouds</h2>
+        <p>
+          Start each morning with artisan Himalayan coffee and an organic
+          breakfast on our panoramic rooftop, then return at dusk for sunset
+          dining as the Annapurnas turn amber and rose.
+        </p>
+        <ul class="dining__features">
+          <li>Artisan Himalayan coffee, roasted regionally</li>
+          <li>Organic, locally sourced breakfast</li>
+          <li>Panoramic rooftop outdoor seating</li>
+          <li>Sunset dining with mountain views</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gallery-preview" id="gallery">
+    <div class="container">
+      <p class="eyebrow">Scenic Himalayan Gallery</p>
+      <h2 class="section-title">The View That Never Repeats</h2>
+      <p class="section-lead">From sunrise gold to twilight blue — the panorama from our balconies and rooftop.</p>
+
+      <div class="gallery" id="gallery-grid">
+        {% for item in gallery %}
+        <button type="button" class="gallery__item" data-full="{% static item.image %}" data-caption="{{ item.caption }}">
+          <img src="{% static item.image %}" alt="{{ item.caption }}" loading="lazy">
+          <span class="gallery__caption">{{ item.caption }}</span>
+        </button>
+        {% endfor %}
+      </div>
+
+      <div class="section__footer-link">
+        <a href="{% url 'gallery' %}" class="btn btn--outline">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section amenities" id="amenities">
+    <div class="container">
+      <p class="eyebrow">Hotel Amenities</p>
+      <h2 class="section-title">Everything You Need, Nothing You Don't</h2>
+
+      <div class="amenities__grid">
+        {% for item in amenities %}
+        <div class="amenity-card">
+          <span class="amenity-card__icon" data-icon="{{ item.icon }}"></span>
+          <span class="amenity-card__label">{{ item.name }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section attractions" id="attractions">
+    <div class="container">
+      <p class="eyebrow">Beyond the Hotel</p>
+      <h2 class="section-title">Pokhara Attractions Guide</h2>
+
+      <div class="attractions__grid">
+        {% for place in attractions %}
+        <div class="attraction-card">
+          <h3>{{ place.name }}</h3>
+          <p>{{ place.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="container contact__grid">
+
+      <div class="contact__info">
+        <p class="eyebrow">Guest Inquiries</p>
+        <h2 class="section-title">Plan Your Stay</h2>
+        <p class="section-lead">Reach out directly, or send an inquiry and our reservations desk will confirm availability.</p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="contact-list__label">Address</span>
+            <span class="contact-list__value">Lakeside, Pokhara, Nepal</span>
+          </li>
+          <li>
+            <span class="contact-list__label">Phone</span>
+            <a class="contact-list__value" href="tel:+97761000000">+977-61-000000</a>
+          </li>
+          <li>
+            <span class="contact-list__label">Email</span>
+            <a class="contact-list__value" href="mailto:reservations@hotelpokharaeye.com">reservations@hotelpokharaeye.com</a>
+          </li>
+        </ul>
+
+        <a class="btn btn--whatsapp" href="https://wa.me/97761000000" target="_blank" rel="noopener">
+          Chat on WhatsApp
+        </a>
+
+        <div class="map-card">
+          <iframe
+            title="Hotel Pokhara Eye location — Lakeside, Pokhara"
+            src="https://maps.google.com/maps?q=Lakeside%2C%20Pokhara%2C%20Nepal&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="contact__form-wrap">
+        <form id="inquiry-form" class="inquiry-form" action="{% url 'inquiry' %}" method="post" novalidate>
+          {% csrf_token %}
+
+          <div class="form-row">
+            <label for="id_full_name">Full Name *</label>
+            <input type="text" id="id_full_name" name="full_name" required>
+          </div>
+
+          <div class="form-row form-row--split">
+            <div>
+              <label for="id_email">Email Address *</label>
+              <input type="email" id="id_email" name="email" required>
+            </div>
+            <div>
+              <label for="id_phone">Phone / WhatsApp *</label>
+              <input type="tel" id="id_phone" name="phone" required>
+            </div>
+          </div>
+
+          <div class="form-row form-row--split">
+            <div>
+              <label for="id_check_in">Check-in Date</label>
+              <input type="date" id="id_check_in" name="check_in">
+            </div>
+            <div>
+              <label for="id_check_out">Check-out Date</label>
+              <input type="date" id="id_check_out" name="check_out">
+            </div>
+          </div>
+
+          <div class="form-row form-row--split">
+            <div>
+              <label for="id_room_preference">Room Preference</label>
+              <select id="id_room_preference" name="room_preference">
+                {% for value, label in room_choices %}
+                  <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="guests-field">
+              <label>Number of Guests</label>
+              <div class="guests-field__inputs">
+                <div>
+                  <label for="id_adults" class="guests-field__sublabel">Adults</label>
+                  <input type="number" id="id_adults" name="adults" min="1" max="20" value="2">
+                </div>
+                <div>
+                  <label for="id_children" class="guests-field__sublabel">Children</label>
+                  <input type="number" id="id_children" name="children" min="0" max="20" value="0">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="id_message">Message / Special Requirements</label>
+            <textarea id="id_message" name="message" rows="4" placeholder="Tell us about your trip, preferences, or special requests..."></textarea>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+
+          <button type="submit" class="btn btn--accent btn--block" id="inquiry-submit">
+            <span class="btn__label">Send Inquiry</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+{% endblock %}
