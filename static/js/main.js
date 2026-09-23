@@ -72,31 +72,6 @@
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   /* -------------------------------------------------------------------- */
-  /* Quick inquiry bar -> populate + scroll to main inquiry form          */
-  /* -------------------------------------------------------------------- */
-  const quickForm = document.getElementById('quick-inquiry');
-  if (quickForm) {
-    quickForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      const map = {
-        'qi-check-in': 'id_check_in',
-        'qi-check-out': 'id_check_out',
-        'qi-room': 'id_room_preference',
-      };
-      Object.keys(map).forEach(function (sourceId) {
-        const source = document.getElementById(sourceId);
-        const target = document.getElementById(map[sourceId]);
-        if (source && target && source.value) target.value = source.value;
-      });
-      const guests = document.getElementById('qi-guests');
-      const adults = document.getElementById('id_adults');
-      if (guests && adults && guests.value) adults.value = guests.value;
-
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-
-  /* -------------------------------------------------------------------- */
   /* "Inquire About This Room" -> pre-select room + scroll to form        */
   /* -------------------------------------------------------------------- */
   document.querySelectorAll('.room-inquire').forEach(function (button) {

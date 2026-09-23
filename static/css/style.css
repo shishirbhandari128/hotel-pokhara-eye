@@ -244,6 +244,7 @@ section[id] { scroll-margin-top: var(--header-height); }
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
   color: var(--color-white);
 }
@@ -269,6 +270,7 @@ section[id] { scroll-margin-top: var(--header-height); }
   position: relative;
   z-index: 2;
   padding-top: var(--header-height);
+  padding-bottom: 4rem;
   max-width: 780px;
 }
 .hero__title {
@@ -283,56 +285,12 @@ section[id] { scroll-margin-top: var(--header-height); }
   max-width: 560px;
   margin-bottom: 2.25rem;
 }
-.hero__cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 6rem; }
-
-.quick-inquiry {
-  position: relative;
-  z-index: 3;
-  margin: 0 auto;
-  max-width: calc(var(--container-w) - 48px);
-  transform: translateY(50%);
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) auto;
-  gap: 1rem;
-  align-items: end;
-  box-shadow: var(--shadow-soft);
-}
-.quick-inquiry__field { display: flex; flex-direction: column; gap: 0.4rem; }
-.quick-inquiry__field label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.85);
-  font-weight: 600;
-}
-.quick-inquiry__field input,
-.quick-inquiry__field select {
-  font-family: var(--font-body);
-  border: 1px solid rgba(255,255,255,0.4);
-  background: rgba(11,19,43,0.35);
-  color: var(--color-white);
-  border-radius: var(--radius-sm);
-  padding: 0.65rem 0.75rem;
-  font-size: 0.9rem;
-  color-scheme: dark;
-}
-.quick-inquiry__field input:focus,
-.quick-inquiry__field select:focus {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 1px;
-}
-.quick-inquiry__submit { white-space: nowrap; }
+.hero__cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0; }
 
 /* ==========================================================================
    About
    ========================================================================== */
-.about { background: var(--color-white); padding-top: calc(96px + 90px); }
+.about { background: var(--color-white); padding-top: 96px; }
 .about__grid {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -786,7 +744,6 @@ section[id] { scroll-margin-top: var(--header-height); }
 @media (max-width: 1080px) {
   .rooms__grid, .attractions__grid { grid-template-columns: repeat(2, 1fr); }
   .amenities__grid { grid-template-columns: repeat(2, 1fr); }
-  .quick-inquiry { grid-template-columns: repeat(2, 1fr); }
   .about__grid, .dining__grid, .contact__grid { gap: 3rem; }
   .gallery--full { grid-template-columns: repeat(3, 1fr); }
 }
@@ -803,8 +760,7 @@ section[id] { scroll-margin-top: var(--header-height); }
   #gallery-grid .gallery__item:nth-child(1) { grid-column: span 2; grid-row: span 1; height: 100%; }
   #gallery-grid .gallery__item:nth-child(4) { grid-column: span 1; }
 
-  .quick-inquiry { transform: translateY(30px); grid-template-columns: 1fr 1fr; }
-  .about { padding-top: calc(72px + 140px); }
+  .about { padding-top: 72px; }
 
   .room-detail-card { grid-template-columns: 1fr; }
   .room-detail-card__media { min-height: 280px; }
@@ -813,13 +769,12 @@ section[id] { scroll-margin-top: var(--header-height); }
 
 @media (max-width: 640px) {
   .section { padding: 64px 0; }
-  .hero__cta { margin-bottom: 8rem; }
-  .quick-inquiry { grid-template-columns: 1fr; transform: translateY(24px); padding: 1.25rem; }
+  .hero__cta { margin-bottom: 0; }
   .rooms__grid, .attractions__grid, .amenities__grid { grid-template-columns: 1fr; }
   .inquiry-form .form-row--split, .inquiry-form .guests-field__inputs { grid-template-columns: 1fr; }
   .contact__form-wrap { padding: 1.5rem; }
   .site-footer__grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .about { padding-top: calc(64px + 190px); }
+  .about { padding-top: 64px; }
   .toast-stack { left: 16px; right: 16px; max-width: none; bottom: 16px; }
 
   .page-hero { padding: calc(var(--header-height) + 2.5rem) 0 3rem; }

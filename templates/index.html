@@ -25,31 +25,6 @@
         <a href="#about" class="btn btn--ghost">Discover the Hotel</a>
       </div>
     </div>
-
-    <form class="quick-inquiry" id="quick-inquiry" aria-label="Quick inquiry">
-      <div class="quick-inquiry__field">
-        <label for="qi-check-in">Check-in</label>
-        <input type="date" id="qi-check-in" name="check_in">
-      </div>
-      <div class="quick-inquiry__field">
-        <label for="qi-check-out">Check-out</label>
-        <input type="date" id="qi-check-out" name="check_out">
-      </div>
-      <div class="quick-inquiry__field">
-        <label for="qi-guests">Guests</label>
-        <input type="number" id="qi-guests" name="guests" min="1" max="20" value="2">
-      </div>
-      <div class="quick-inquiry__field">
-        <label for="qi-room">Room Type</label>
-        <select id="qi-room" name="room_preference">
-          <option value="">Any</option>
-          {% for value, label in room_choices %}
-            {% if value %}<option value="{{ value }}">{{ label }}</option>{% endif %}
-          {% endfor %}
-        </select>
-      </div>
-      <button type="submit" class="btn btn--accent quick-inquiry__submit">Check Availability</button>
-    </form>
   </section>
 
   <section class="section about" id="about">
@@ -210,7 +185,7 @@
           </li>
           <li>
             <span class="contact-list__label">Phone</span>
-            <a class="contact-list__value" href="tel:+97761000000">+977-61-000000</a>
+            <a class="contact-list__value" href="tel:+9779856014322">+977 985-6014322</a>
           </li>
           <li>
             <span class="contact-list__label">Email</span>
@@ -218,7 +193,7 @@
           </li>
         </ul>
 
-        <a class="btn btn--whatsapp" href="https://wa.me/97761000000" target="_blank" rel="noopener">
+        <a class="btn btn--whatsapp" href="https://wa.me/9779856014322" target="_blank" rel="noopener">
           Chat on WhatsApp
         </a>
 
