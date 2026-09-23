@@ -35,9 +35,9 @@ def env_list(name, default=None):
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    'SECRET_KEY',
-    'django-insecure-ne$*8s8yr1a5c1^v3zhd0m7mv4+7yw9lt#v_xcfmo+3aqo+e5l',
+SECRET_KEY = (
+    os.environ.get('SECRET_KEY')
+    or 'django-insecure-ne$*8s8yr1a5c1^v3zhd0m7mv4+7yw9lt#v_xcfmo+3aqo+e5l'
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -151,8 +151,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-EMAIL_BACKEND = os.environ.get(
-    'EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = (
+    os.environ.get('EMAIL_BACKEND')
+    or 'django.core.mail.backends.smtp.EmailBackend'
 )
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT') or 587)
